@@ -1,0 +1,24 @@
+Linux, Xeon(R) CPU X5650 @ 2.67GHz * 12 
+
+N = 50000000
+1 cores:  9540
+2 cores:  5073
+3 cores:  4112
+4 cores:  3120
+5 cores:  3212
+6 cores:  2751
+7 cores:  2713
+8 cores:  2611
+9 cores:  2418
+10 cores: 2383
+11 cores: 2197
+12 cores: 2258
+Lib:      6285
+
+
+Mac, Core 2 Duo 2.66 * 2
+
+N = 50000000
+1 cores:    13238
+2 cores:    8285
+Lib:        6976
