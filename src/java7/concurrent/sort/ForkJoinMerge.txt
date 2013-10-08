@@ -22,3 +22,11 @@ N = 50000000
 1 cores:    13238
 2 cores:    8285
 Lib:        6976
+
+
+Win, Core 2 Duo 2.8 * 2
+
+N = 50000000
+1 cores:    11833
+2 cores:    7482
+Lib:        6185
