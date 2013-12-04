@@ -17,27 +17,23 @@ public class InvertSingleLinked {
 	}
 
 	static <T> Node<T> invert(Node<T> head) {
-		if (head == null) {
-	        return null;
+		Node<T> prev = null, current = head;
+		while (current != null) {
+	        Node<T> next = current.next;
+	        current.next = prev;
+	        prev = current;
+	        current = next;
         }
-		Node<T> first = null, last = null;
-		while (true) {
-			Node<T> current = head, prev = null;
-			while (current.next != null) {
-	            prev = current;
-	            current = current.next;
-            }
-			if (first == null) {
-	            first = last = current;
-            } else {
-            	last.next = current;
-            	last = current;
-            }
-			if (prev == null) {
-	            return first;
-            }
-			prev.next = null;
-			System.out.println(first);
-		}
+		return prev;
+	}
+	
+	static <T> Node<T> invertRecursive(Node<T> head) {
+		if (head == null || head.next == null) {
+	        return head;
+        }
+		Node<T> remainder = invertRecursive(head.next);
+		head.next.next = head;
+		head.next = null;
+		return remainder;
 	}
 }
