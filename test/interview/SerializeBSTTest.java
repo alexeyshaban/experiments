@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import interview.SerializeBST.Node;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
