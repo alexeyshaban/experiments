@@ -1,6 +1,7 @@
-package interview;
+package interview.trees;
 
 import static org.junit.Assert.*;
+import interview.trees.TreeTraversal;
 
 import java.util.List;
 

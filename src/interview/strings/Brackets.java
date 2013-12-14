@@ -1,4 +1,4 @@
-package interview;
+package interview.strings;
 
 import java.util.Stack;
 

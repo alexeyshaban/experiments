@@ -1,4 +1,4 @@
-package interview;
+package interview.numbers;
 
 public class NumIntsWithout4 {
 

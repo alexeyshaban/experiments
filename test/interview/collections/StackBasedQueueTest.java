@@ -1,6 +1,7 @@
-package interview;
+package interview.collections;
 
 import static org.junit.Assert.*;
+import interview.collections.StackBasedQueue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

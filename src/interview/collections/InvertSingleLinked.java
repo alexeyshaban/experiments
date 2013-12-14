@@ -1,4 +1,4 @@
-package interview;
+package interview.collections;
 
 public class InvertSingleLinked {
 

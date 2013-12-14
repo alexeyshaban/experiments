@@ -1,4 +1,4 @@
-package interview;
+package interview.trees;
 
 import java.util.LinkedList;
 import java.util.List;

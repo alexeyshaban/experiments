@@ -1,4 +1,4 @@
-package interview;
+package interview.strings;
 
 public class RLE {
 

@@ -1,6 +1,8 @@
-package interview;
+package interview.collections;
 
 import static org.junit.Assert.*;
+import interview.collections.Entry;
+import interview.collections.InvertSingleLinked;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package interview;
+package interview.collections;
 
 import java.util.Stack;
 

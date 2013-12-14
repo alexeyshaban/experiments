@@ -1,6 +1,6 @@
-package interview;
+package interview.trees;
 
-class Node {
+public class Node {
 	int value;
 	Node left;
 	Node right;

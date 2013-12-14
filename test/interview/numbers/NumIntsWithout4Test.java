@@ -1,6 +1,7 @@
-package interview;
+package interview.numbers;
 
 import static org.junit.Assert.*;
+import interview.numbers.NumIntsWithout4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
