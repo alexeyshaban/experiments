@@ -2,24 +2,10 @@ package interview;
 
 public class InvertSingleLinked {
 
-	static class Node<T> {
-		T value;
-		Node<T> next;
-		public Node(T value, Node<T> next) {
-	        this.value = value;
-	        this.next = next;
-        }
-		@Override
-		public String toString() {
-		    return "[" + value +  " ("+ next + ")]";
-		}
-		
-	}
-
-	static <T> Node<T> invert(Node<T> head) {
-		Node<T> prev = null, current = head;
+	static <T> Entry<T> invert(Entry<T> head) {
+		Entry<T> prev = null, current = head;
 		while (current != null) {
-	        Node<T> next = current.next;
+	        Entry<T> next = current.next;
 	        current.next = prev;
 	        prev = current;
 	        current = next;
@@ -27,11 +13,11 @@ public class InvertSingleLinked {
 		return prev;
 	}
 	
-	static <T> Node<T> invertRecursive(Node<T> head) {
+	static <T> Entry<T> invertRecursive(Entry<T> head) {
 		if (head == null || head.next == null) {
 	        return head;
         }
-		Node<T> remainder = invertRecursive(head.next);
+		Entry<T> remainder = invertRecursive(head.next);
 		head.next.next = head;
 		head.next = null;
 		return remainder;

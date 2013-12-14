@@ -1,7 +1,6 @@
 package interview;
 
 import static org.junit.Assert.*;
-import interview.InvertSingleLinked.Node;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,8 +17,8 @@ public class InvertSingleLinkedTest {
 	
 	@Test
     public void testInvertSingle() throws Exception {
-		InvertSingleLinked.Node<Integer> head = new InvertSingleLinked.Node<>(123, null);
-		Node<Integer> invert = InvertSingleLinked.invert(head);
+		Entry<Integer> head = new Entry<>(123, null);
+		Entry<Integer> invert = InvertSingleLinked.invert(head);
 		assertEquals(123, invert.value.intValue());
 		assertNull(invert.next);
 		
@@ -31,14 +30,14 @@ public class InvertSingleLinkedTest {
 
 	@Test
     public void testInvert() throws Exception {
-		InvertSingleLinked.Node<Integer> head = new InvertSingleLinked.Node<>(1,
-				new InvertSingleLinked.Node<>(2,
-						new InvertSingleLinked.Node<>(3,
-								new InvertSingleLinked.Node<>(4, null))));
+		Entry<Integer> head = new Entry<>(1,
+				new Entry<>(2,
+						new Entry<>(3,
+								new Entry<>(4, null))));
 
 		System.out.println(head);
 		
-		Node<Integer> invert = InvertSingleLinked.invert(head);
+		Entry<Integer> invert = InvertSingleLinked.invert(head);
 		System.out.println(invert);
 		head = invert;
 		
@@ -52,7 +51,7 @@ public class InvertSingleLinkedTest {
 		assertNull(invert.next);
 		
 		
-		Node<Integer> invertBack = InvertSingleLinked.invertRecursive(head);
+		Entry<Integer> invertBack = InvertSingleLinked.invertRecursive(head);
 		System.out.println(invertBack);
 		assertEquals(1, invertBack.value.intValue());
 		invertBack = invertBack.next;
