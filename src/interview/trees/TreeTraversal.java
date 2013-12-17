@@ -1,59 +1,46 @@
 package interview.trees;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 public class TreeTraversal {
+	
+	interface Visitor {
+		void visit(Node node);
+	}
 
-	static List<Integer> inOrderIterative(Node root) {
-		List<Integer> result = new LinkedList<>();
+	static void inOrderIterative(Node node, Visitor v) {
 		Stack<Node> s = new Stack<>();
-		Node current = root;
-		while (true) {
-			while (current != null) {
-				s.push(current);
-				current = current.left;
-			}
-			if (s.isEmpty()) {
-				break;
+		while (!s.isEmpty() || node != null) {
+			if (node != null) {
+				s.push(node);
+				node = node.left;
 			} else {
-				current = s.pop();
-				result.add(current.value);
-				current = current.right;
+				node = s.pop();
+				v.visit(node);
+				node = node.right;
 			}
 		}
-		return result;
 	}
 	
-	static List<Integer> preOrderIterative(Node root) {
-		List<Integer> result = new LinkedList<>();
+	static void preOrderIterative(Node node, Visitor v) {
 		Stack<Node> s = new Stack<>();
-		Node current = root;
-		while (true) {
-			while (current != null) {
-				result.add(current.value);
-				if (current.right != null) {
-					s.push(current.right);
-				}
-				current = current.left;
-			}
-			if (s.isEmpty()) {
-				break;
+		while (!s.isEmpty() || node != null) {
+			if (node != null) {
+				v.visit(node);
+				s.push(node);
+				node = node.left;
 			} else {
-				current = s.pop();
+				node = s.pop().right;
 			}
 		}
-		return result;
 	}
 	
-	static List<Integer> preOrderIterativeStackOnly(Node root) {
-		List<Integer> result = new LinkedList<>();
+	static void preOrderIterativeLikeRecursion(Node node, Visitor v) {
 		Stack<Node> s = new Stack<>();
-		s.push(root);
+		s.push(node);
 		while (!s.isEmpty()) {
 			Node current = s.pop();
-			result.add(current.value);
+			v.visit(current);
 			if (current.right != null) {
 				s.push(current.right);
 			}
@@ -61,6 +48,26 @@ public class TreeTraversal {
 				s.push(current.left);
 			}
 		}
-		return result;
+	}
+	
+
+	static void postOrderIterative(Node node, Visitor v) {
+		Stack<Node> s = new Stack<>();
+		Node lastVisited = null;
+		while (!s.isEmpty() || node != null) {
+			if (node != null) {
+				s.push(node);
+				node = node.left;
+			} else {
+				Node peek = s.peek();
+				if (peek.right != null && peek.right != lastVisited) {
+					node = peek.right;
+				} else {
+					s.pop();
+					v.visit(peek);
+					lastVisited = peek;
+				}
+			}
+		}
 	}
 }
