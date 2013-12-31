@@ -4,22 +4,21 @@ import java.util.Stack;
 
 public class StackBasedQueue<T> {
 
-	Stack<T> s = new Stack<>();
+	Stack<T> newest = new Stack<>();
+	Stack<T> oldest = new Stack<>();
 	
 	StackBasedQueue<T> enqueue(T t) {
-		s.push(t);
+		newest.push(t);
 		return this;
 	}
 	
 	T dequeue() {
-		Stack<T> tmp = new Stack<>();
-		while (!s.isEmpty()) {
-			tmp.push(s.pop());
+		if (!oldest.isEmpty()) {
+			return oldest.pop();
 		}
-		T result = tmp.pop();
-		while (!tmp.isEmpty()) {
-			s.push(tmp.pop());
+		while (!newest.isEmpty()) {
+			oldest.push(newest.pop());
 		}
-		return result;
+		return oldest.pop();
 	}
 }
