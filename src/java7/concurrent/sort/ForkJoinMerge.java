@@ -82,8 +82,13 @@ public class ForkJoinMerge {
 
     Arrays.sort(Arrays.copyOf(original, warmUpSize));
     long time = System.currentTimeMillis();
-    Arrays.sort(original);
+    Arrays.sort(Arrays.copyOf(original, original.length));
     System.out.println("Lib:\t\t" + (System.currentTimeMillis() - time));
+    
+    Arrays.parallelSort(Arrays.copyOf(original, warmUpSize));
+    time = System.currentTimeMillis();
+    Arrays.parallelSort(Arrays.copyOf(original, original.length));
+    System.out.println("Lib parallel:\t" + (System.currentTimeMillis() - time));
   }
 
   private static int[] fillRandom(int N) {
