@@ -37,6 +37,7 @@ Lib parallel:	3002
 Win, Core 2 Duo 2.8 * 2
 
 N = 50000000
-1 cores:    11833
-2 cores:    7482
-Lib:        6185
+1 cores:    11525
+2 cores:    7206
+Lib:        6257
+Lib parallel:   3919
