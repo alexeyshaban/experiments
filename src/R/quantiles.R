@@ -1,16 +1,26 @@
-# Approximate quantiles CI based on asymptotic method from MKmisc
+library(binom)
 
-quantileCIApprox <- function(x, prob = 0.95, conf.level = 0.95) {
-  alpha <- 1 - conf.level
-  z <- qnorm(1-alpha/2)
-  n <- length(x)
-  xs <- sort(x)
+quantileCI <- function(x, prob, method, conf.level = 0.95) {
+  int <- binom.confint(
+    x = prob * length(x),
+    n = length(x),
+    methods = method,
+    conf.level = conf.level)
   
-  prob.sd <- sqrt(n*prob*(1-prob))
-  k.lo <- max(1, floor(n*prob - z*prob.sd))
-  k.up <- min(n, ceiling(n*prob + z*prob.sd))
-  CI <- c(xs[k.lo], xs[k.up])
-  CIapprox <- c(quantile(x, k.lo/n), quantile(x, k.up/n))
-    
-  list("CI" = CI, "CIapprox" = CIapprox)
+  c(
+    quantile(x, max(int$lower, 0)),
+    quantile(x, min(int$upper, 1)))
+}
+
+testCI <- function(n, prob, method, conf.level = 0.95) {
+  success = 0
+  for (i in 1:n) {
+    x = rexp(1000, 0.1)
+    ci = quantileCI(x, prob, method, conf.level)
+    uci = unname(ci)
+    if (uci[1] < qexp(prob, 0.1) && uci[2] > qexp(prob, 0.1)) {
+      success = success + 1
+    }
+  }
+  success / n
 }
